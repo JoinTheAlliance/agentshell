@@ -49,7 +49,7 @@ def get_current_shell():
     current_shell = get_memories("shell", "shell", filter_metadata={"current": "True"})
 
     if len(current_shell) == 0:
-        shell_id = create_memory("shell", "shell", metadata={"current": "True"})
+        shell_id = create_memory("shell", "shell", metadata={"current": "True", "cwd": os.getcwd()})
     else:
         current_shell = current_shell[0]
         shell_id = current_shell["id"]
