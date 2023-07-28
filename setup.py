@@ -21,7 +21,7 @@ setup(
     author_email="shawmakesmagic@gmail.com",
     license="MIT",
     packages=["agentshell"],
-    install_requires=["agentmemory"],
+    install_requires=["agentmemory", "easycompletion"],
     readme="README.md",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
