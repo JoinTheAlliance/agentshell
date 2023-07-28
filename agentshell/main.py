@@ -12,13 +12,13 @@ from agentmemory import (
 )
 
 
-def get_files_in_current_directory(shell_id=None):
+def get_files_in_cwd(shell_id=None):
     """
     Returns a list of files in the current directory of a specific shell.
-    
+
     Parameters:
     shell_id (str): The unique identifier of the shell. If not specified, uses the current shell.
-    
+
     Returns:
     list: A list of filenames in the current directory.
     """
@@ -41,11 +41,11 @@ def get_files_in_current_directory(shell_id=None):
 def get_current_shell():
     """
     Returns the unique identifier of the current shell. If no shell is currently active, creates a new shell and returns its identifier.
-    
+
     Returns:
     str: The unique identifier of the current shell.
     """
-     
+
     current_shell = get_memories("shell", "shell", filter_metadata={"current": "True"})
 
     if len(current_shell) == 0:
@@ -153,9 +153,17 @@ def add_to_shell_history(shell_id, command, success, output, error=None):
     """
 
     timestamp = time.time()
+
+    formatted_memory = """\
+    Command: {command}
+    Timestamp: {timestamp}
+    Success: {success}
+    Output: {output}
+    Error: {error}"""
+
     create_memory(
         "shell_history",
-        shell_id,
+        formatted_memory,
         metadata={
             "shell_id": shell_id,
             "command": command,
@@ -253,7 +261,7 @@ def run_command(command, shell_id=None):
     Returns:
     bool: True if the command was successful, False otherwise.
     """
-    
+
     if shell_id is None:
         shell_id = get_current_shell()
     shell = get_memory("shell", shell_id)

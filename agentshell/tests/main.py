@@ -1,6 +1,6 @@
 import os
 from agentshell.main import (
-    get_files_in_current_directory,
+    get_files_in_cwd,
     get_current_shell,
     set_current_shell,
     set_cwd,
@@ -63,14 +63,14 @@ def test_get_history_formatted():
     teardown(shell_id)
 
 
-def test_get_files_in_current_directory():
+def test_get_files_in_cwd():
     shell_id = setup()
 
     basename = os.path.basename(__file__)
 
     # Change to a known directory and check the files
     set_cwd(os.path.dirname(os.path.abspath(__file__)), shell_id)
-    files = get_files_in_current_directory(shell_id)
+    files = get_files_in_cwd(shell_id)
 
     # Assert that the known file is in the list of files
     assert os.path.basename(basename) in "\n".join(files)

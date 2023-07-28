@@ -12,7 +12,7 @@ pip install agentshell
 
 # Documentation
 
-## `get_files_in_current_directory(shell_id=None)`
+## `get_files_in_cwd(shell_id=None)`
 
 Returns a list of files in the current directory of a specific shell. If `shell_id` is not specified, uses the current shell.
 

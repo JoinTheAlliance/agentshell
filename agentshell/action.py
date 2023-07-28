@@ -1,6 +1,6 @@
 from easycompletion import compose_function, compose_prompt
 
-from agentshell.main import get_files_in_current_directory, run_command
+from agentshell.main import get_files_in_cwd, run_command
 
 
 use_shell_prompt = """TIME: {{current_time}}
@@ -25,7 +25,7 @@ def compose_use_shell_prompt(context):
     context["files_in_current_directory"] = (
         "\n" + "Files in the current directory (ls -alh):\n"
         "============================================\n"
-        "" + ("\n".join(get_files_in_current_directory())) + "\n"
+        "" + ("\n".join(get_files_in_cwd())) + "\n"
         "============================================\n"
     )
 
