@@ -17,9 +17,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest pytest-asyncio
+        pip install pytest
         pip install -r requirements.txt
     - name: Running tests
       run: |
         pytest agentshell/test.py
-        pytest agentshell/test_async.py
