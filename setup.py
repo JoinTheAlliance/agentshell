@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="agentshell",
-    version="0.1.0",
+    version="0.0.1",
     description="A shell for your agent.",
     long_description=long_description,  # added this line
     long_description_content_type="text/markdown",  # and this line
