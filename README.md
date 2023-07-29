@@ -1,8 +1,11 @@
-# agentshell
+# agentshell <a href="https://discord.gg/qetWd7J9De"><img style="float: right" src="https://dcbadge.vercel.app/api/server/qetWd7J9De" alt=""></a>
 
 A shell for your agent. Track state and history, multiple shells, and more.
 
 <img src="resources/image.jpg">
+
+[![Lint and Test](https://github.com/AutonomousResearchGroup/agentshell/actions/workflows/test.yml/badge.svg)](https://github.com/AutonomousResearchGroup/agentshell/actions/workflows/test.yml)
+[![PyPI version](https://badge.fury.io/py/agentshell.svg)](https://badge.fury.io/py/agentshell)
 
 # Installation
 
