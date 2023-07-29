@@ -285,7 +285,7 @@ def run_command(command, shell_id=None):
             result_split = "\n".join(result_split)
 
         add_to_shell_history(shell_id, command, success="True", output=result)
-        return True
+        return { "success": True, "output": result_split, "error": None }
 
     else:  # If the process did not complete successfully
         output = process.stdout
@@ -293,4 +293,4 @@ def run_command(command, shell_id=None):
         add_to_shell_history(
             shell_id, command, success="False", output=output, error=error
         )
-        return False
+        return { "success": False, "output": output, "error": error }

@@ -32,9 +32,9 @@ def compose_use_shell_prompt(context):
     return compose_prompt(use_shell_prompt, context)
 
 
-def use_shell(arguments):
+def use_shell_handler(arguments):
     command = arguments.get("command")
-    run_command(command)
+    return run_command(command)
 
 
 def get_actions():
@@ -57,7 +57,7 @@ def get_actions():
             ),
             "prompt": use_shell_prompt,
             "builder": compose_use_shell_prompt,
-            "handler": use_shell,
+            "handler": use_shell_handler,
             "suggestion_after_actions": ["use_shell"],  # suggest self
             "never_after_actions": [],
         }
