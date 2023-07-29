@@ -37,7 +37,7 @@ def test_run_command():
     result = run_command(command, shell_id)
 
     # The command should run successfully
-    assert result == True
+    assert result["success"] == True
     teardown(shell_id)
 
 
