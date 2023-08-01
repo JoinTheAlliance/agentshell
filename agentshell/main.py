@@ -273,6 +273,9 @@ def run_command(command, shell_id=None):
     # If the process completed successfully
     if process.returncode == 0:
         result = process.stdout
+        error = process.stderr
+
+        success = error == "" or error is None
 
         result_split = result.strip().split("\n")
         updated_directory = result_split[-1]
@@ -285,7 +288,7 @@ def run_command(command, shell_id=None):
             result_split = "\n".join(result_split)
 
         add_to_shell_history(shell_id, command, success="True", output=result)
-        return { "success": True, "output": result_split, "error": None }
+        return { "success": success, "output": result_split, "error": error }
 
     else:  # If the process did not complete successfully
         output = process.stdout
