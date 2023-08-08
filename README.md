@@ -13,6 +13,113 @@ A shell for your agent. Track state and history, multiple shells, and more.
 pip install agentshell
 ```
 
+# Getting Started
+
+`agentshell` is a shell wrapper around `subprocess` for maintaining command history and current working directory across multiple shell instances. `agentshell` also helps with some LLM-specific needs, including optins to shorten return long outputs as a filepath.
+
+### Basic Usage
+
+**Starting with the default shell**:
+
+If you don't specify a shell ID, `agentshell` will use a default shell.
+
+```python
+from agentshell import run_command
+
+response = run_command('ls')
+print(response['output'])
+```
+
+**Getting Current Working Directory**:
+
+Fetch the current directory of the active shell:
+
+```python
+from agentshell import get_cwd
+
+current_directory = get_cwd()
+print(current_directory)
+```
+
+**Setting Current Working Directory**:
+
+You can also change the directory of the active shell:
+
+```python
+from agentshell import set_cwd
+
+set_cwd('/path/to/directory')
+```
+
+### Advanced Usage
+
+**Managing Multiple Shells**:
+
+With `agentshell`, it's straightforward to handle multiple shell instances.
+
+- **Creating a new shell**:
+
+```python
+from agentshell import new_shell
+
+shell_id = new_shell()
+```
+
+- **Listing active shells**:
+
+```python
+from agentshell import list_active_shells
+
+shells = list_active_shells()
+print(shells)
+```
+
+- **Switching between shells**:
+
+```python
+from agentshell import set_current_shell
+
+set_current_shell(shell_id)
+```
+
+- **Closing a shell**:
+
+```python
+from agentshell import close_shell
+
+close_shell(shell_id)
+```
+
+**Viewing Command History**:
+
+You can view the command history of any shell. If no shell ID is provided, it fetches the history of the current active shell.
+
+```python
+from agentshell import get_history_formatted
+
+formatted_history = get_history_formatted()
+print(formatted_history)
+```
+
+**Clearing History**:
+
+```python
+from agentshell import clear_history
+
+clear_history(shell_id)
+```
+
+**Running Commands in a Specific Shell**:
+
+Run commands in a shell by specifying its ID.
+
+```python
+from agentshell import run_command
+
+response = run_command('echo "Hello, World!"', shell_id=shell_id)
+print(response['output'])
+```
+
 # Documentation
 
 ## `get_files_in_cwd(shell_id=None)`
