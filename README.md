@@ -15,7 +15,7 @@ pip install agentshell
 
 # Getting Started
 
-`agentshell` is a shell wrapper around `subprocess` for maintaining command history and current working directory across multiple shell instances. `agentshell` also helps with some LLM-specific needs, including optins to shorten return long outputs as a filepath.
+`agentshell` is a shell wrapper around `subprocess` for maintaining command history and current working directory across multiple shell instances.
 
 ### Basic Usage
 

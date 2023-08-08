@@ -49,7 +49,9 @@ def get_current_shell():
     current_shell = get_memories("shell", "shell", filter_metadata={"current": "True"})
 
     if len(current_shell) == 0:
-        shell_id = create_memory("shell", "shell", metadata={"current": "True", "cwd": os.getcwd()})
+        shell_id = create_memory(
+            "shell", "shell", metadata={"current": "True", "cwd": os.getcwd()}
+        )
     else:
         current_shell = current_shell[0]
         shell_id = current_shell["id"]
@@ -288,7 +290,7 @@ def run_command(command, shell_id=None):
             result_split = "\n".join(result_split)
 
         add_to_shell_history(shell_id, command, success="True", output=result)
-        return { "success": success, "output": result_split, "error": error }
+        return {"success": success, "output": result_split, "error": error}
 
     else:  # If the process did not complete successfully
         output = process.stdout
@@ -296,4 +298,4 @@ def run_command(command, shell_id=None):
         add_to_shell_history(
             shell_id, command, success="False", output=output, error=error
         )
-        return { "success": False, "output": output, "error": error }
+        return {"success": False, "output": output, "error": error}
